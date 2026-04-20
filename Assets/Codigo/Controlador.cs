@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Controlador : MonoBehaviour
 {
-    int rotacion = 0;
+    float rotacion = 0f;
     int velocidad = 1;
     bool avanzando = true;
     bool rotando = true;
+    bool retrocediendo = true;
     public float fuerzaMovimiento = 10f;
     public float fuerzaMovimientoAtras = 4f;
     public Rigidbody submarino;
@@ -15,37 +16,45 @@ public class Controlador : MonoBehaviour
     {
         avanzando = false;
         rotando = false;
+        retrocediendo = false;
     }
 
     // Update is called once per frame
     void Update()
         {
 
+
+        if (submarino.linearVelocity.magnitude < 1.2f) {
+            Debug.Log("tas quieto");
+            avanzando = false;
+        }
+
         Debug.Log("rotando =" + rotando);
-        Debug.Log("rotando =" + avanzando);
+        Debug.Log("avanzando =" + avanzando);
         
-        if (avanzando == false && Input.GetKey("left")){
-            rotando = true;
-            rotacion += 2;
+        if (Input.GetKey("left") && avanzando == false){
+            rotacion += 0.3f;
         }
-        if (avanzando == false && Input.GetKey("right")){
-            rotando = true;
-            rotacion = rotacion - 1;
+        if (Input.GetKey("right") && avanzando == false){
+            rotacion = rotacion - 0.3f;
         }
-
-
 
 
         if (Input.GetKey("up")) {
         submarino.linearVelocity = transform.up * fuerzaMovimiento;
+        avanzando = true;
+        retrocediendo = false;
         }
-        if (Input.GetKey("down")) {
-        submarino.linearVelocity = -transform.up * fuerzaMovimientoAtras;
+        
+        if (Input.GetKey("down") ) {
+        submarino.linearVelocity = -transform.up * 1.5f;
+        avanzando = true;
         }
 
-        if (submarino.linearVelocity.magnitude < 0.1f) {
+
+        if (submarino.linearVelocity.magnitude < 0.5f) {
         submarino.linearVelocity = Vector3.zero;
-        submarino.angularVelocity = Vector3.zero; // Detiene también micro-rotaciones
+        submarino.angularVelocity = Vector3.zero;
         }
             
         
