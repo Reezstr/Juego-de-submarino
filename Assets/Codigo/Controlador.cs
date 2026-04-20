@@ -7,7 +7,7 @@ public class Controlador : MonoBehaviour
     bool avanzando = true;
     bool rotando = true;
     bool retrocediendo = true;
-    public float fuerzaMovimiento = 10f;
+    public float fuerzaMovimiento = 15f;
     public float fuerzaMovimientoAtras = 4f;
     public Rigidbody submarino;
 

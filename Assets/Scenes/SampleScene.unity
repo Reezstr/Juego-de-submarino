@@ -225,7 +225,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2bb208da361044b82e615f4e839841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controlador
-  fuerzaMovimiento: 10
+  fuerzaMovimiento: 15
   fuerzaMovimientoAtras: 4
   submarino: {fileID: 1079121776}
 --- !u!4 &1079121775
@@ -398,7 +398,7 @@ Rigidbody:
   m_GameObject: {fileID: 1079121773}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 2
+  m_LinearDamping: 1
   m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -441,13 +441,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124476514}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.5438, z: 0}
+  m_LocalScale: {x: 1, y: 0.9177, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1079121775}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2124476516
 SpriteRenderer:
   serializedVersion: 2
@@ -497,7 +497,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1077447548145910429, guid: f8e6d7ea023e5a146af19357acc461f7, type: 3}
+  m_Sprite: {fileID: -6271712351642301656, guid: 904afcf04910b6e4a93d41c5b4fefa03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
