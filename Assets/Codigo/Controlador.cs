@@ -10,6 +10,10 @@ public class Controlador : MonoBehaviour
     public float fuerzaMovimiento = 20f;
     public float fuerzaMovimientoAtras = 8f;
     public Rigidbody submarino;
+    public GameObject contenedor;
+    public Sprite subamarino;
+    public Sprite subamarinoContenedor; // Assign this in the Inspector
+    private SpriteRenderer spriteRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +26,10 @@ public class Controlador : MonoBehaviour
     // Update is called once per frame
     void Update()
         {
-
+        if (Input.GetKey("space")){
+            contenedor.SetActive(true);
+            spriteRenderer.sprite = subamarino;
+        }
 
         if (submarino.linearVelocity.magnitude < 3.6f) {
             Debug.Log("tas quieto");
@@ -59,5 +66,18 @@ public class Controlador : MonoBehaviour
             
         
         transform.rotation = Quaternion.Euler(0, 0, rotacion);
+
+        }
+        private void OnTriggerEnter(Collider collision)
+        {
+        if(collision.CompareTag("Contenedor"))
+            {
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = subamarinoContenedor;
+            }
+         }
+
+
+    
+    
     }
-}
