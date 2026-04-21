@@ -31,6 +31,10 @@ public class Controlador : MonoBehaviour
     // Update is called once per frame
     void Update()
         {
+            
+
+
+
         if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
             contenedor.SetActive(true);
             spriteRenderer.sprite = subamarino;
@@ -97,7 +101,18 @@ public class Controlador : MonoBehaviour
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = subamarinoContenedor;
             }
+
+        if(collision.CompareTag("Plataforma"))
+            {
+                gameObject.tag = "Submarino";
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = subamarino;
+                cargas_Entregadas += 1;
+                carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
+            }
+         
          }
+         
 
 
         public void ActivarTextoTemporal()
@@ -112,5 +127,7 @@ public class Controlador : MonoBehaviour
         carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
         carga_Activa.color = Color.white;
      }
+    
+
     
     }
