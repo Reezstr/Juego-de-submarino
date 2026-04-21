@@ -7,8 +7,8 @@ public class Controlador : MonoBehaviour
     bool avanzando = true;
     bool rotando = true;
     bool retrocediendo = true;
-    public float fuerzaMovimiento = 15f;
-    public float fuerzaMovimientoAtras = 4f;
+    public float fuerzaMovimiento = 20f;
+    public float fuerzaMovimientoAtras = 8f;
     public Rigidbody submarino;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +24,7 @@ public class Controlador : MonoBehaviour
         {
 
 
-        if (submarino.linearVelocity.magnitude < 1.2f) {
+        if (submarino.linearVelocity.magnitude < 3.6f) {
             Debug.Log("tas quieto");
             avanzando = false;
         }
@@ -47,7 +47,7 @@ public class Controlador : MonoBehaviour
         }
         
         if (Input.GetKey("down") ) {
-        submarino.linearVelocity = -transform.up * 1.5f;
+        submarino.linearVelocity = -transform.up * 4.0f;
         avanzando = true;
         }
 
