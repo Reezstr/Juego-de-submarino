@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using TMPro;
+using System.Collections;
 public class Controlador : MonoBehaviour
 {
     float rotacion = 0f;
@@ -11,27 +12,46 @@ public class Controlador : MonoBehaviour
     public float fuerzaMovimientoAtras = 8f;
     public Rigidbody submarino;
     public GameObject contenedor;
+    public GameObject contenedor2;
+    public GameObject contenedor3;
     public Sprite subamarino;
     public Sprite subamarinoContenedor; // Assign this in the Inspector
     private SpriteRenderer spriteRenderer;
-
+    public TMP_Text carga_Activa;
+    private int cargas_Entregadas = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         avanzando = false;
         rotando = false;
         retrocediendo = false;
+        carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
     }
 
     // Update is called once per frame
     void Update()
         {
-        if (Input.GetKey("space")){
+        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
             contenedor.SetActive(true);
             spriteRenderer.sprite = subamarino;
+            gameObject.tag = "Submarino";
+            ActivarTextoTemporal();
+        }
+        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
+            contenedor2.SetActive(true);
+            spriteRenderer.sprite = subamarino;
+            gameObject.tag = "Submarino";
+            ActivarTextoTemporal();
+        }
+        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
+            contenedor3.SetActive(true);
+            spriteRenderer.sprite = subamarino;
+            gameObject.tag = "Submarino";
+            ActivarTextoTemporal();
         }
 
-        if (submarino.linearVelocity.magnitude < 3.6f) {
+
+        if (submarino.linearVelocity.magnitude < 4.8f) {
             Debug.Log("tas quieto");
             avanzando = false;
         }
@@ -40,10 +60,10 @@ public class Controlador : MonoBehaviour
         Debug.Log("avanzando =" + avanzando);
         
         if (Input.GetKey("left") && avanzando == false){
-            rotacion += 0.3f;
+            rotacion += 0.6f;
         }
         if (Input.GetKey("right") && avanzando == false){
-            rotacion = rotacion - 0.3f;
+            rotacion = rotacion - 0.6f;
         }
 
 
@@ -54,7 +74,7 @@ public class Controlador : MonoBehaviour
         }
         
         if (Input.GetKey("down") ) {
-        submarino.linearVelocity = -transform.up * 4.0f;
+        submarino.linearVelocity = -transform.up * 5.0f;
         avanzando = true;
         }
 
@@ -72,12 +92,25 @@ public class Controlador : MonoBehaviour
         {
         if(collision.CompareTag("Contenedor"))
             {
+                carga_Activa.text = ("CARGA RECOGIDA " + cargas_Entregadas + "/ 3");
+                gameObject.tag = "OCUPADO";
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = subamarinoContenedor;
             }
          }
 
 
-    
+        public void ActivarTextoTemporal()
+        {
+            StartCoroutine(CambiarTextoPorTiempo());
+        }
+        IEnumerator CambiarTextoPorTiempo()
+        {
+        carga_Activa.text = ("CARGA PERDIDA");
+        carga_Activa.color = Color.red;
+        yield return new WaitForSeconds(2.0f);
+        carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
+        carga_Activa.color = Color.white;
+     }
     
     }

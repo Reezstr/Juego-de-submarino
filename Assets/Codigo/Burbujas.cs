@@ -6,10 +6,10 @@ public class Burbujas : MonoBehaviour
     private static int burbujas = 0;
     private void Start()
     {
-        // Solo buscamos el texto si no ha sido asignado antes por otra burbuja
+        
         if (MostrarMonedas == null)
         {
-            MostrarMonedas = Object.FindFirstObjectByType<TMP_Text>();
+           MostrarMonedas = GameObject.Find("Cambiar monedas").GetComponent<TMP_Text>();
         }
     }
 
@@ -21,7 +21,13 @@ public class Burbujas : MonoBehaviour
         if(collision.CompareTag("Submarino"))
             {
                 burbujas +=1;
-                MostrarMonedas.text = ("burbujas = " + burbujas);
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
+        if(collision.CompareTag("OCUPADO"))
+            {
+                burbujas +=1;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
                 Destroy(gameObject);
             }
     
