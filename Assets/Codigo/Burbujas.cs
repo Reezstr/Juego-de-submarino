@@ -30,15 +30,39 @@ public class Burbujas : MonoBehaviour
                 MostrarMonedas.SetText("burbujas = " + burbujas);
                 Destroy(gameObject);
             }
-        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("Submarino"))
+                if(collision.CompareTag("OCUPADO2"))
             {
                 burbujas +=1;
                 MostrarMonedas.SetText("burbujas = " + burbujas);
                 Destroy(gameObject);
             }
-        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("OCUPADO"))
+                if(collision.CompareTag("OCUPADO3"))
             {
                 burbujas +=1;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
+        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("Submarino"))
+            {
+                burbujas +=5;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
+        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("OCUPADO"))
+            {
+                burbujas +=5;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
+        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("OCUPADO2"))
+            {
+                burbujas +=5;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
+        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("OCUPADO3"))
+            {
+                burbujas +=5;
                 MostrarMonedas.SetText("burbujas = " + burbujas);
                 Destroy(gameObject);
             }
