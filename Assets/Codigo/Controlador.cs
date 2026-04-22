@@ -18,6 +18,7 @@ public class Controlador : MonoBehaviour
     public Sprite subamarinoContenedor; // Assign this in the Inspector
     private SpriteRenderer spriteRenderer;
     public TMP_Text carga_Activa;
+    public TMP_Text victoria;
     private int cargas_Entregadas = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +32,12 @@ public class Controlador : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
         {
-            
+        
+        if (cargas_Entregadas == 3)
+        {
+            victoria.text = ("Ganaste!!!");
+            Destroy(gameObject);
+        }
 
         
 
