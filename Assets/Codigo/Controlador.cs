@@ -98,6 +98,31 @@ public class Controlador : MonoBehaviour
         submarino.MoveRotation(Quaternion.Euler(0, 0, rotacion));
 
         }
+        private void OnCollisionEnter(Collision pared)
+        {
+        
+        if (gameObject.CompareTag("OCUPADO") && pared.gameObject.CompareTag("tuberia")){
+            contenedor.SetActive(true);
+            spriteRenderer.sprite = subamarino;
+            ActivarTextoTemporal();
+            Debug.Log("Activating: " + contenedor.name);
+            gameObject.tag = "Submarino";
+        }
+        if (gameObject.CompareTag("OCUPADO") && pared.gameObject.CompareTag("tuberia")){
+            contenedor2.SetActive(true);
+            spriteRenderer.sprite = subamarino;
+            ActivarTextoTemporal();
+            Debug.Log("Activating: " + contenedor2.name);
+            gameObject.tag = "Submarino";
+        }
+        if (gameObject.CompareTag("OCUPADO") && pared.gameObject.CompareTag("tuberia")){
+            contenedor3.SetActive(true);
+            spriteRenderer.sprite = subamarino;
+            ActivarTextoTemporal();
+            Debug.Log("Activating: " + contenedor3.name);
+            gameObject.tag = "Submarino";
+        }
+        }
         private void OnTriggerEnter(Collider collision)
         {
         if(collision.CompareTag("Contenedor"))
@@ -108,7 +133,7 @@ public class Controlador : MonoBehaviour
                 spriteRenderer.sprite = subamarinoContenedor;
             }
 
-        if(collision.CompareTag("Plataforma"))
+        if(collision.CompareTag("Plataforma") && gameObject.CompareTag("OCUPADO"))
             {
                 gameObject.tag = "Submarino";
                 spriteRenderer = GetComponent<SpriteRenderer>();
@@ -116,6 +141,7 @@ public class Controlador : MonoBehaviour
                 cargas_Entregadas += 1;
                 carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
             }
+
          
          }
          
