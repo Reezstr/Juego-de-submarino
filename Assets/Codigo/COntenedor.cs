@@ -16,5 +16,5 @@ public class COntenedor : MonoBehaviour
                 gameObject.SetActive(false);
             }
     }
-
+    
 }

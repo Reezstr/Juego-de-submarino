@@ -41,13 +41,13 @@ public class Controlador : MonoBehaviour
             gameObject.tag = "Submarino";
             ActivarTextoTemporal();
         }
-        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
+        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO2")){
             contenedor2.SetActive(true);
             spriteRenderer.sprite = subamarino;
             gameObject.tag = "Submarino";
             ActivarTextoTemporal();
         }
-        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
+        if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO3")){
             contenedor3.SetActive(true);
             spriteRenderer.sprite = subamarino;
             gameObject.tag = "Submarino";
@@ -104,36 +104,66 @@ public class Controlador : MonoBehaviour
         if (gameObject.CompareTag("OCUPADO") && pared.gameObject.CompareTag("tuberia")){
             contenedor.SetActive(true);
             spriteRenderer.sprite = subamarino;
+            gameObject.tag = "Submarino";
             ActivarTextoTemporal();
             Debug.Log("Activating: " + contenedor.name);
-            gameObject.tag = "Submarino";
         }
-        if (gameObject.CompareTag("OCUPADO") && pared.gameObject.CompareTag("tuberia")){
+        if (gameObject.CompareTag("OCUPADO2") && pared.gameObject.CompareTag("tuberia")){
             contenedor2.SetActive(true);
             spriteRenderer.sprite = subamarino;
+            gameObject.tag = "Submarino";
             ActivarTextoTemporal();
             Debug.Log("Activating: " + contenedor2.name);
-            gameObject.tag = "Submarino";
         }
-        if (gameObject.CompareTag("OCUPADO") && pared.gameObject.CompareTag("tuberia")){
+        if (gameObject.CompareTag("OCUPADO3") && pared.gameObject.CompareTag("tuberia")){
             contenedor3.SetActive(true);
             spriteRenderer.sprite = subamarino;
+            gameObject.tag = "Submarino";
             ActivarTextoTemporal();
             Debug.Log("Activating: " + contenedor3.name);
-            gameObject.tag = "Submarino";
         }
         }
         private void OnTriggerEnter(Collider collision)
         {
-        if(collision.CompareTag("Contenedor"))
+        if(collision.CompareTag("Contenedor") && gameObject.CompareTag("Submarino") )
             {
                 carga_Activa.text = ("CARGA RECOGIDA " + cargas_Entregadas + "/ 3");
                 gameObject.tag = "OCUPADO";
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = subamarinoContenedor;
             }
+                if(collision.CompareTag("Contenedor2") && gameObject.CompareTag("Submarino") )
+            {
+                carga_Activa.text = ("CARGA RECOGIDA " + cargas_Entregadas + "/ 3");
+                gameObject.tag = "OCUPADO2";
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = subamarinoContenedor;
+            }
+                if(collision.CompareTag("Contenedor3") && gameObject.CompareTag("Submarino") )
+            {
+                carga_Activa.text = ("CARGA RECOGIDA " + cargas_Entregadas + "/ 3");
+                gameObject.tag = "OCUPADO3";
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = subamarinoContenedor;
+            }
 
         if(collision.CompareTag("Plataforma") && gameObject.CompareTag("OCUPADO"))
+            {
+                gameObject.tag = "Submarino";
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = subamarino;
+                cargas_Entregadas += 1;
+                carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
+            }
+        if(collision.CompareTag("Plataforma") && gameObject.CompareTag("OCUPADO2"))
+            {
+                gameObject.tag = "Submarino";
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = subamarino;
+                cargas_Entregadas += 1;
+                carga_Activa.text = ("Cargas faltante " + cargas_Entregadas + "/ 3");
+            }
+        if(collision.CompareTag("Plataforma") && gameObject.CompareTag("OCUPADO3"))
             {
                 gameObject.tag = "Submarino";
                 spriteRenderer = GetComponent<SpriteRenderer>();
