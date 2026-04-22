@@ -30,6 +30,18 @@ public class Burbujas : MonoBehaviour
                 MostrarMonedas.SetText("burbujas = " + burbujas);
                 Destroy(gameObject);
             }
+        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("Submarino"))
+            {
+                burbujas +=1;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
+        if(gameObject.CompareTag("burbuja roja") && collision.CompareTag("OCUPADO"))
+            {
+                burbujas +=1;
+                MostrarMonedas.SetText("burbujas = " + burbujas);
+                Destroy(gameObject);
+            }
     
     
 

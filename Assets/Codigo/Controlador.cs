@@ -19,6 +19,7 @@ public class Controlador : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public TMP_Text carga_Activa;
     public TMP_Text victoria;
+    
     private int cargas_Entregadas = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,7 +62,7 @@ public class Controlador : MonoBehaviour
         }
 
 
-        if (submarino.linearVelocity.magnitude < 5f) {
+        if (submarino.linearVelocity.magnitude < 10f) {
             Debug.Log("tas quieto");
             avanzando = false;
         }
@@ -70,32 +71,32 @@ public class Controlador : MonoBehaviour
         Debug.Log("avanzando =" + avanzando);
         
         if (Input.GetKey("left") && avanzando == false){
-            rotacion += 1f;
+            rotacion += 2f;
         }
         if (Input.GetKey("right") && avanzando == false){
-            rotacion = rotacion - 1f;
+            rotacion = rotacion - 2f;
         }
         if (Input.GetKey("left") && avanzando == true){
-            rotacion += 0.5f;
+            rotacion += 1f;
         }
         if (Input.GetKey("right") && avanzando == true){
-            rotacion = rotacion - 0.5f;
+            rotacion = rotacion - 1f;
         }
 
 
         if (Input.GetKey("up")) {
-        submarino.linearVelocity = transform.up * fuerzaMovimiento;
+        submarino.linearVelocity = transform.up * 25;
         avanzando = true;
         retrocediendo = false;
         }
         
         if (Input.GetKey("down") ) {
-        submarino.linearVelocity = -transform.up * 5.0f;
+        submarino.linearVelocity = -transform.up *10.0f;
         avanzando = true;
         }
 
 
-        if (submarino.linearVelocity.magnitude < 0.5f) {
+        if (submarino.linearVelocity.magnitude < 1f) {
         submarino.linearVelocity = Vector3.zero;
         submarino.angularVelocity = Vector3.zero;
         }
