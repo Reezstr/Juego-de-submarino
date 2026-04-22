@@ -55,7 +55,7 @@ public class Controlador : MonoBehaviour
         }
 
 
-        if (submarino.linearVelocity.magnitude < 4.8f) {
+        if (submarino.linearVelocity.magnitude < 5f) {
             Debug.Log("tas quieto");
             avanzando = false;
         }
@@ -68,6 +68,12 @@ public class Controlador : MonoBehaviour
         }
         if (Input.GetKey("right") && avanzando == false){
             rotacion = rotacion - 0.6f;
+        }
+        if (Input.GetKey("left") && avanzando == true){
+            rotacion += 0.1f;
+        }
+        if (Input.GetKey("right") && avanzando == true){
+            rotacion = rotacion - 0.1f;
         }
 
 
