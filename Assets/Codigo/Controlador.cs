@@ -29,11 +29,11 @@ public class Controlador : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
         {
             
 
-
+        
 
         if (Input.GetKey("space") && gameObject.CompareTag("OCUPADO")){
             contenedor.SetActive(true);
@@ -64,16 +64,16 @@ public class Controlador : MonoBehaviour
         Debug.Log("avanzando =" + avanzando);
         
         if (Input.GetKey("left") && avanzando == false){
-            rotacion += 0.6f;
+            rotacion += 1f;
         }
         if (Input.GetKey("right") && avanzando == false){
-            rotacion = rotacion - 0.6f;
+            rotacion = rotacion - 1f;
         }
         if (Input.GetKey("left") && avanzando == true){
-            rotacion += 0.1f;
+            rotacion += 0.5f;
         }
         if (Input.GetKey("right") && avanzando == true){
-            rotacion = rotacion - 0.1f;
+            rotacion = rotacion - 0.5f;
         }
 
 
@@ -95,7 +95,7 @@ public class Controlador : MonoBehaviour
         }
             
         
-        transform.rotation = Quaternion.Euler(0, 0, rotacion);
+        submarino.MoveRotation(Quaternion.Euler(0, 0, rotacion));
 
         }
         private void OnTriggerEnter(Collider collision)
